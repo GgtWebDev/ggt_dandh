@@ -1,70 +1,114 @@
-:root {
-  font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
-  font-size: 16px;
-  line-height: 24px;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/**
+ * @license
+ *
+ * Font Family: Clash Grotesk
+ * Designed by: Indian Type Foundry
+ * URL: https://www.fontshare.com/fonts/clash-grotesk
+ * © 2023 Indian Type Foundry
+ *
+ * Font Styles:
+ * Clash Grotesk Variable(Variable font)
+ * Clash Grotesk Extralight
+ * Clash Grotesk Light
+ * Clash Grotesk Regular
+ * Clash Grotesk Medium
+ * Clash Grotesk Semibold
+ * Clash Grotesk Bold
+ *
+*/
+
+/**
+* This is a variable font
+* You can controll variable axes as shown below:
+* font-variation-settings: 'wght' 700.0;
+*
+* available axes:
+
+* 'wght' (range from 200.0 to 700.0)
+
+*/
+
+@font-face {
+  font-family: 'ClashGrotesk-Variable';
+  src: url('./assets/fonts/ClashGrotesk-Variable.woff2') format('woff2'),
+    url('./assets/fonts/ClashGrotesk-Variable.woff') format('woff'),
+    url('./assets/fonts/ClashGrotesk-Variable.ttf') format('truetype');
+  font-weight: 200 700;
+  font-display: swap;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'ClashGrotesk-Light';
+  src: url('./assets/fonts/ClashGrotesk-Light.woff2') format('woff2'),
+    url('./assets/fonts/ClashGrotesk-Light.woff') format('woff'),
+    url('./assets/fonts/ClashGrotesk-Light.ttf') format('truetype');
+  font-weight: 300;
+  font-display: swap;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'ClashGrotesk-Regular';
+  src: url('./assets/fonts/ClashGrotesk-Regular.woff2') format('woff2'),
+    url('./assets/fonts/ClashGrotesk-Regular.woff') format('woff'),
+    url('./assets/fonts/ClashGrotesk-Regular.ttf') format('truetype');
   font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-text-size-adjust: 100%;
+  font-display: swap;
+  font-style: normal;
 }
 
-a {
+@font-face {
+  font-family: 'ClashGrotesk-Medium';
+  src: url('./assets/fonts/ClashGrotesk-Medium.woff2') format('woff2'),
+    url('./assets/fonts/ClashGrotesk-Medium.woff') format('woff'),
+    url('./assets/fonts/ClashGrotesk-Medium.ttf') format('truetype');
   font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
+  font-display: swap;
+  font-style: normal;
 }
-a:hover {
-  color: #535bf2;
+
+@font-face {
+  font-family: 'ClashGrotesk-Semibold';
+  src: url('./assets/fonts/ClashGrotesk-Semibold.woff2') format('woff2'),
+    url('./assets/fonts/ClashGrotesk-Semibold.woff') format('woff'),
+    url('./assets/fonts/ClashGrotesk-Semibold.ttf') format('truetype');
+  font-weight: 600;
+  font-display: swap;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'ClashGrotesk-Bold';
+  src: url('./assets/fonts/ClashGrotesk-Bold.woff2') format('woff2'),
+    url('./assets/fonts/ClashGrotesk-Bold.woff') format('woff'),
+    url('./assets/fonts/ClashGrotesk-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-display: swap;
+  font-style: normal;
 }
 
 body {
+  padding: 0;
   margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  box-sizing: border-box;
+  background: '#FFFFFF';
+  font-family: 'ClashGrotesk-Medium', sans-serif;
+  font-size: 16px;
+  line-height: 19.68px;
+  color: #003503;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+.__shadow {
+  box-shadow: 0px 4px 20px rgba(103, 191, 107, 0.2);
 }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+.__input_auth {
+  border: 1px solid rgba(125, 131, 152, 0.3);
+  box-shadow: 0px 3px 6px rgba(18, 18, 18, 0.03);
+  border-radius: 6px;
 }

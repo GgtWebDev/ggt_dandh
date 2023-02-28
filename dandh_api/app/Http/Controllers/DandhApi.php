@@ -18,7 +18,8 @@ class DandhApi extends Controller
 
     public function getPriceAndAvail()
     {
-        $data = DandH::product('687P0UT');
+        // $data = DandH::product('687P0UT');
+        $data = DandH::CreateOrder();
 
         return $this->success($data, 'Item Info :');
     }

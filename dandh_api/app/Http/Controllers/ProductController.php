@@ -56,7 +56,9 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        //
+        $products = Product::all();
+
+        return $this->success($products, "All products : ");
     }
 
     /**

@@ -1,64 +1,19 @@
-import { useState } from 'react';
-import reactLogo from './assets/react.svg';
-import './App.css';
+import React from 'react';
+import { Routes, Route } from 'react-router-dom';
+import { Home, Register, SignIn } from './pages';
+import { GoogleOAuthProvider } from '@react-oauth/google';
 
-function App() {
-  const [count, setCount] = useState(0);
-
-  const accountInfo = {
-    grant_type: 'client_credentials',
-    client_id: '844dd702-7b17-4cd2-bca6-9398d0ceaef7',
-    client_secret: 'c29d74b1-cc74-466f-bb81-e0a595baebc9',
-    scope: '',
-  };
-
-  let formBody = [];
-
-  for (let property in accountInfo) {
-    let encodedKey = encodeURIComponent(property);
-    let encodedValue = encodeURIComponent(accountInfo[property]);
-    formBody.push(encodedKey + '=' + encodedValue);
-  }
-
-  formBody = formBody.join('&');
-
-  const createAccount = async () => {
-    const response = await fetch(
-      `https://test.auth.dandh.com/api/oauth/token`,
-      {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
-        },
-        body: formBody,
-      }
-    );
-    const data = await response.json();
-    console.log(data);
-  };
-
+const App = () => {
+  const clientId = import.meta.env.VITE_GOOGLE_CLIENT_ID;
   return (
-    <div className='App'>
-      <div>
-        <a href='https://vitejs.dev' target='_blank'>
-          <img src='/vite.svg' className='logo' alt='Vite logo' />
-        </a>
-        <a href='https://reactjs.org' target='_blank'>
-          <img src={reactLogo} className='logo react' alt='React logo' />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className='card'>
-        <button onClick={createAccount}>count is {count}</button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className='read-the-docs'>
-        Click on the Vite and React logos to learn more
-      </p>
+    <div className=' w-full overflow-hidden px-[1rem] lg:px-[3rem] xl:px-[8rem] mt-8'>
+      <Routes>
+        <Route exact path='/' element={<Home />} />
+        <Route exact path='/sign-in' element={<SignIn />} />
+        <Route exact path='/register' element={<Register />} />
+      </Routes>
     </div>
   );
-}
+};
 
 export default App;

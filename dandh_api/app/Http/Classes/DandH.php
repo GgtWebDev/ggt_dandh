@@ -88,7 +88,7 @@ class DandH
         } else return 'Unauthorized !';
     }
 
-    public static function CreateOrder($data)
+    public static function CreateOrder()
     {
         self::$token = self::apiToken();
 
@@ -101,11 +101,57 @@ class DandH
                 'dandh-tenant' => 'dhus'
             ];
 
+            $data =
+                [
+                    "customerPurchaseOrder" => "123456",
+                    "deliveryAddress" => [
+                        "address" => [
+                            "city" => "california",
+                            "country" => "US",
+                            "postalCode" => "123456",
+                            "region" => "CA",
+                            "street" => "120th ne street,california"
+                        ],
+                        "attention" => "string",
+                        "deliveryName" => "Nihal"
+                    ],
+
+                    // "freightBillingAccount" => "string",
+                    // "notes" => "string",
+                    "shipments" => [
+                        [
+                            // "branch" => "string",
+                            "lines" => [
+                                [
+                                    "item" => "687P0UT",
+                                    "orderQuantity" => 1,
+                                    "unitPrice" => "1100.00"
+
+                                ]
+                            ],
+                            "shipping" => [
+                                "allowBackOrder" => true,
+                                // "allowPartialShipment" => true,
+                                "carrier" => "pickup",
+                                // "dropShipPassword" => "string",
+                                // "onlyBranch" => "string",
+                                "serviceType" => "pickup"
+                            ]
+                        ]
+                    ]
+                ];
+
+            // dd(json_encode($data));
+
             $url = self::$dandhMainurl . '/' . 'customers' . '/' . self::$accountNumber . '/' . 'salesOrders';
 
             // dd($url, $header);
 
-            $response = Http::withHeaders($header)->post($url,);
+            $data1 = json_encode($data);
+
+            dd($data1);
+
+            $response = Http::withHeaders($header)->post($url, $data1);
 
             $data = $response->body();
 
@@ -117,3 +163,36 @@ class DandH
     {
     }
 }
+
+
+// "endUserData" => [
+//     "address" => [
+//         "city" => "string",
+//         "country" => "str",
+//         "postalCode" => "string",
+//         "region" => "string",
+//         "street" => "string"
+//     ],
+//     "attention" => "string",
+//     "authorizationQuoteNumber" => "string",
+//     "ccoId" => "string",
+//     "customerAccountNumber" => "string",
+//     "dateOfSale" => "2023-02-09T21:45:41.083Z",
+//     "department" => "string",
+//     "domain" => "string",
+//     "domainAdministratorEmailAddress" => "string",
+//     "email" => "string",
+//     "endUserEmailAddress" => "string",
+//     "fax" => "string",
+//     "masterContactNumber" => "string",
+//     "modelNumber" => "string",
+//     "organization" => "string",
+//     "phone" => "string",
+//     "purchaseOrderNumber" => "string",
+//     "resellerEmailAddress" => "string",
+//     "resellerPhone" => "string",
+//     "serialNumbers" => "string",
+//     "supportStartDate" => "2023-02-09T21:45:41.083Z",
+//     "updateType" => "New",
+//     "warrantySku" => "string"
+// ],
